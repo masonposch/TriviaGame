@@ -76,6 +76,7 @@ function theGame(){
 }
 
 function nextQuestion(){
+	count = 7;
 	currentIndex++;
 	$('#theQuestion').html(questions[currentIndex].question);
 	$('form').html(questions[currentIndex].answers);
