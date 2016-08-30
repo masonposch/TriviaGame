@@ -7,31 +7,31 @@ var unanswered = 0;
 var questions = [
 	firstQuestion={
 		question: "How many pet cats are there in the U.S.?",
-		answers: '<input class="answers" type="radio" name="answer" value="88 million"> 88 million<br><input class="answers" type="radio" name="answer" value="120 million"> 120 million<br><input class="answers" type="radio" name="answer" value="657,930"> 657930<br><input class="answers" type="radio" name="answer" value="6 million"> 6 million<br>',
+		answers: '<input id="option1" type="radio" name="question1" value="correct"> 88 million<br><input id="option2" type="radio" name="question1" value="incorrect"> 120 million<br><input id="option3" type="radio" name="question1" value="incorrect"> 657930<br><input id="option4" type="radio" name="question1" value="incorrect"> 6 million<br>',
 		correctAnswer: "88 million"
 	},
 	
 	secondQuestion={
 		question: "What is a group of cats called?",
-		answers: '<input class="answers" type="radio" name="answer" value="A Herd"> A Herd<br><input class="answers" type="radio" name="answer" value="A Gaggle"> A Gaggle<br><input class="answers" type="radio" name="answer" value="A Clowder"> A Clowder<br><input class="answers" type="radio" name="answer" value="A Stampede"> A Stampede<br>',
+		answers: '<input id="option1" type="radio" name="question2" value="incorrect"> A Herd<br><input id="option2" type="radio" name="question2" value="incorrect"> A Gaggle<br><input id="option3" type="radio" name="question2" value="correct"> A Clowder<br><input id="option4" type="radio" name="question2" value="incorrect"> A Stampede<br>',
 		correctAnswer: "A Clowder"
 	},
 
 	thirdQuestion={
 		question: "How much of their lives do cats spend sleeping?",
-		answers: '<input class="answers" type="radio" name="answer" value="35%"> 35%<br><input class="answers" type="radio" name="answer" value="50%"> 50%<br><input class="answers" type="radio" name="answer" value="85%"> 85%<br><input class="answers" type="radio" name="answer" value="70%"> 70%<br>',
+		answers: '<input id="option1" type="radio" name="question3" value="incorrect"> 35%<br><input id="option2" type="radio" name="question3" value="incorrect"> 50%<br><input id="option3" type="radio" name="question3" value="incorrect"> 85%<br><input id="option4" type="radio" name="question3" value="correct"> 70%<br>',
 		correctAnswer: "70%"
 	},
-
+s
 	fourthQuestion={
 		question: "How long is the world's longest cat?",
-		answers: '<input class="answers" type="radio" name="answer" value="2 feet"> 2 feet<br><input class="answers" type="radio" name="answer" value="48.5 inches"> 48.5 inches<br><input class="answers" type="radio" name="answer" value="37 inches"> 37 inches<br><input class="answers" type="radio" name="answer" value="100 inches"> 100 inches<br>'
+		answers: '<input id="option1" type="radio" name="question4" value="incorrect"> 2 feet<br><input id="option2" type="radio" name="question4" value="correct"> 48.5 inches<br><input id="option3" type="radio" name="question4" value="incorrect"> 37 inches<br><input id="option4" type="radio" name="question4" value="incorrect"> 100 inches<br>',
 		correctAnswer: "48.5 inches"
 	},
 
 	fifthQuestion={
 		question: "What is the scientific name for a \"hairball\"?",
-		answers: '<input class="answers" type="radio" name="answer" value="Pieza kake"> Pieza kake<br><input class="answers" type="radio" name="answer" value="Bezoar"> Bezoar<br><input class="answers" type="radio" name="answer" value="Nematoad"> Nematoad<br><input class="answers" type="radio" name="answer" value="Scaptia"> Scaptia<br>'
+		answers: '<input id="option1" type="radio" name="question5" value="incorrect"> Pieza kake<br><input id="option2" type="radio" name="question5" value="correct"> Bezoar<br><input id="option3" type="radio" name="question5" value="incorrect"> Nematoad<br><input id="option4" type="radio" name="question5" value="incorrect"> Scaptia<br>',
 		correctAnswer: "Bezoar"
 	}
 ];
@@ -68,26 +68,29 @@ function theGame(){
 	$('#question').removeClass('hidden');
 	$('#theQuestion').html(questions[currentIndex].question);
 	$('form').html(questions[currentIndex].answers);
+	$("#nextQuestion").on('click', function(){
+		for(var i = 1; i <= 1; i++){
+			var radio = document.getElementsByName('question'+i);
+			for(var j = 0; j < radio.length; j++);
+				if(radio.value == "correct" && radio.checked){
+					correct++;
+					console.log(radio.value);
+				} else {
+					incorrect++;
+					console.log(radio.value);
+				}
+		}	
+	});
 	$("#nextQuestion").on('click', nextQuestion);
 }
 
 function nextQuestion(){
 	count = 7;
 	currentIndex++;
-	$("#nextQuestion").on('click', checkAnswers);
 	$('#theQuestion').html(questions[currentIndex].question);
 	$('form').html(questions[currentIndex].answers);
 }
 
-function checkAnswers(){
-	if(userAnswer === correctAnswers[0] || userAnswer === correctAnswers[1] || userAnswer === correctAnswers[2] || userAnswer === correctAnswers[3] || userAnswer === correctAnswers[4]){
-		correct++;
-		console.log("Correct: " + correct);
-	} else {
-		incorrect++;
-		console.log("Incorrect: " + incorrect);
-	}
-}
 
 
 
@@ -96,30 +99,25 @@ function checkAnswers(){
 
 
 
-
-
-
-
-
-
-// if(questions[currentIndex - 1].answers.value === correctAnswers[currentIndex]){
-	// 	correct++;
-	// 	console.log("Correct: " + correct);
-	// }
-	// else if(questions[currentIndex - 1].answers.value !== correctAnswers[currentIndex]){
-	// 	incorrect++;
-	// 	console.log("Incorrect: " + incorrect);
-	// }
-	// else if(count === 0){
-	// 	unanswered++;
-	// 	console.log("Unanswered: " + unanswered);
-	// }
-
-
-
-
-
-
+// if (document.getElementById('option1').checked) {
+//   			var userAnswer = document.getElementById('option1').value;
+// 		}
+// 		else if (document.getElementById('option2').checked){
+// 			var userAnswer = document.getElementById('option2').value;
+// 		}
+// 		else if (document.getElementById('option3').checked){
+// 			var userAnswer = document.getElementById('option3').value;
+// 		}
+// 		else if (document.getElementById('option4').checked){
+// 			var userAnswer = document.getElementById('option4').value;
+// 		}
+// 		if(userAnswer === questions[currentIndex].correctAnswer){
+// 			correct++;
+// 			console.log("Correct: " + correct);
+// 		} else {
+// 			incorrect++;
+// 			console.log("Incorrect: " + incorrect);
+// 		}
 
 
 
