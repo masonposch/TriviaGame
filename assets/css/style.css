@@ -1,3 +1,8 @@
+/*font-family: 'Bowlby One SC', cursive;
+font-family: 'Cambay', sans-serif;*/
+
+
+
 body {
 	background-image: url("../images/cat.jpg");
 	background-size: 100%;
@@ -6,7 +11,7 @@ body {
 #questionBox{
 	background-color: #fff;
 	opacity: 0.85;
-	margin-top: 10%;
+	margin-top: 5%;
 	margin-bottom: 10%;
 	padding-top: 25px;
 	padding-bottom: 50px;
@@ -29,3 +34,33 @@ button {
     display: inline-block;
     font-size: 16px;
 }
+
+#nextQuestion {
+	color: white;
+	margin-top: 20px;
+}
+
+#gameTitle {
+	font-family: 'Bowlby One SC', cursive;
+	font-size: 60px;
+}
+
+#theQuestion {
+	font-family: 'Bowlby One SC', cursive;
+	font-size: 25px;
+}
+
+#possibleAnswers {
+	font-family: 'Cambay', sans-serif;
+	font-size: 20px;
+}
+
+#timer, #correctResults, #incorrectResults, #unansweredResults {
+	font-family: 'Cambay', sans-serif;
+}
+
+
+
+
+
+

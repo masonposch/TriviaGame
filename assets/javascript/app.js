@@ -7,7 +7,7 @@ var unanswered = 0;
 var questions = [
 	firstQuestion={
 		question: "How many pet cats are there in the U.S.?",
-		answers: '<input id="option1" type="radio" name="question1" value="correct"> 88 million<br><input id="option2" type="radio" name="question1" value="incorrect"> 120 million<br><input id="option3" type="radio" name="question1" value="incorrect"> 657930<br><input id="option4" type="radio" name="question1" value="incorrect"> 6 million<br>',
+		answers: '<input id="option1" type="radio" name="question1" value="correct"> 88 million, <br> <input id="option2" type="radio" name="question1" value="incorrect"> 120 million, <br> <input id="option3" type="radio" name="question1" value="incorrect"> 657930, <br> <input id="option4" type="radio" name="question1" value="incorrect"> 6 million',
 		correctAnswer: "88 million"
 	},
 	
@@ -22,7 +22,7 @@ var questions = [
 		answers: '<input id="option1" type="radio" name="question3" value="incorrect"> 35%<br><input id="option2" type="radio" name="question3" value="incorrect"> 50%<br><input id="option3" type="radio" name="question3" value="incorrect"> 85%<br><input id="option4" type="radio" name="question3" value="correct"> 70%<br>',
 		correctAnswer: "70%"
 	},
-s
+
 	fourthQuestion={
 		question: "How long is the world's longest cat?",
 		answers: '<input id="option1" type="radio" name="question4" value="incorrect"> 2 feet<br><input id="option2" type="radio" name="question4" value="correct"> 48.5 inches<br><input id="option3" type="radio" name="question4" value="incorrect"> 37 inches<br><input id="option4" type="radio" name="question4" value="incorrect"> 100 inches<br>',
@@ -54,6 +54,10 @@ function decrement(){
 	}
 }
 
+function stop(){
+    clearInterval(counter);
+}
+
 
 
 window.onload = function(){
@@ -71,7 +75,9 @@ function theGame(){
 	$("#nextQuestion").on('click', function(){
 		for(var i = 1; i <= 1; i++){
 			var radio = document.getElementsByName('question'+i);
-			for(var j = 0; j < radio.length; j++);
+			console.log(radio);
+			return;
+			for(var j = 0; j < radio.length; j++){
 				if(radio.value == "correct" && radio.checked){
 					correct++;
 					console.log(radio.value);
@@ -79,6 +85,7 @@ function theGame(){
 					incorrect++;
 					console.log(radio.value);
 				}
+			}
 		}	
 	});
 	$("#nextQuestion").on('click', nextQuestion);
@@ -87,8 +94,22 @@ function theGame(){
 function nextQuestion(){
 	count = 7;
 	currentIndex++;
-	$('#theQuestion').html(questions[currentIndex].question);
-	$('form').html(questions[currentIndex].answers);
+	if(currentIndex > 4){
+		$("#question").addClass("hidden");
+		$("#nextQuestion").addClass("hidden");
+		$("#possibleAnswers").addClass("hidden");
+		$("#theQuestion").addClass("hidden");
+		$("#timer").addClass('hidden');
+		$("#theResultsArea").removeClass("hidden");
+		$("#correctResults").html("Correct: " + correct);
+		$("#incorrectResults").html("Incorrect: " + incorrect);
+		$("#unansweredResults").html("Unanswered: " + unanswered);
+		stop();
+	}
+	else {
+		$('#theQuestion').html(questions[currentIndex].question);
+		$('form').html(questions[currentIndex].answers);
+	}
 }
 
 
@@ -96,28 +117,6 @@ function nextQuestion(){
 
 
 
-
-
-
-// if (document.getElementById('option1').checked) {
-//   			var userAnswer = document.getElementById('option1').value;
-// 		}
-// 		else if (document.getElementById('option2').checked){
-// 			var userAnswer = document.getElementById('option2').value;
-// 		}
-// 		else if (document.getElementById('option3').checked){
-// 			var userAnswer = document.getElementById('option3').value;
-// 		}
-// 		else if (document.getElementById('option4').checked){
-// 			var userAnswer = document.getElementById('option4').value;
-// 		}
-// 		if(userAnswer === questions[currentIndex].correctAnswer){
-// 			correct++;
-// 			console.log("Correct: " + correct);
-// 		} else {
-// 			incorrect++;
-// 			console.log("Incorrect: " + incorrect);
-// 		}
 
 
 
